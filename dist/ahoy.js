@@ -374,61 +374,30 @@
 
   function createVisit() {
     isReady = false;
-
     visitId = ahoy.getVisitId();
     visitorId = ahoy.getVisitorId();
-    track = getCookie("ahoy_track");
 
-    if (config.cookies === false || config.trackVisits === false) {
-      log("Visit tracking disabled");
+    var data = {
+      visit_token: visitId,
+      visitor_token: visitorId,
+      platform: config.platform,
+      landing_page: window.location.href,
+      screen_width: window.screen.width,
+      screen_height: window.screen.height,
+      js: true
+    };
+
+    // referrer
+    if (document.referrer.length > 0) {
+      data.referrer = document.referrer;
+    }
+
+    log(data);
+
+    sendRequest(visitsUrl(), data, function () {
+      // wait until successful to destroy
       setReady();
-    } else if (visitId && visitorId && !track) {
-      // TODO keep visit alive?
-      log("Active visit");
-      setReady();
-    } else {
-      if (!visitId) {
-        // use meta element to get visitId
-        visitId = generateId();
-        setCookie("visit_token", visitId, visitTtl);
-      }
-
-      // make sure cookies are enabled
-      if (getCookie("visit_token")) {
-        log("Visit started");
-
-        if (!visitorId) {
-          // use meta element to get visitId
-          visitorId = generateId();
-          setCookie("visitor_token", visitorId, visitorTtl);
-        }
-
-        var data = {
-          visit_token: visitId,
-          visitor_token: visitorId,
-          platform: config.platform,
-          landing_page: window.location.href,
-          screen_width: window.screen.width,
-          screen_height: window.screen.height,
-          js: true
-        };
-
-        // referrer
-        if (document.referrer.length > 0) {
-          data.referrer = document.referrer;
-        }
-
-        log(data);
-
-        sendRequest(visitsUrl(), data, function () {
-          // wait until successful to destroy
-          destroyCookie("ahoy_track");
-          setReady();
-        });
-      } else {
-        log("Cookies disabled");
-        setReady();
-      }
+    });
     }
   }
 
