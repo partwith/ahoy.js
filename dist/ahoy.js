@@ -123,7 +123,7 @@
   };
 
   var config = {
-    urlPrefix: "",
+    urlPrefix: "http://localhost:3010",
     visitsUrl: "/ahoy/visits",
     eventsUrl: "/ahoy/events",
     cookieDomain: null,
@@ -388,17 +388,19 @@
       setReady();
     } else {
       if (!visitId) {
+        // use meta element to get visitId
         visitId = generateId();
-        setCookie("ahoy_visit", visitId, visitTtl);
+        setCookie("visit_token", visitId, visitTtl);
       }
 
       // make sure cookies are enabled
-      if (getCookie("ahoy_visit")) {
+      if (getCookie("visit_token")) {
         log("Visit started");
 
         if (!visitorId) {
+          // use meta element to get visitId
           visitorId = generateId();
-          setCookie("ahoy_visitor", visitorId, visitorTtl);
+          setCookie("visitor_token", visitorId, visitorTtl);
         }
 
         var data = {
@@ -431,16 +433,16 @@
   }
 
   ahoy.getVisitId = ahoy.getVisitToken = function () {
-    return getCookie("ahoy_visit");
+    return $('meta[name=visit-token]').attr('content');
   };
 
   ahoy.getVisitorId = ahoy.getVisitorToken = function () {
-    return getCookie("ahoy_visitor");
+    return $('meta[name=visitor-token]').attr('content');
   };
 
   ahoy.reset = function () {
-    destroyCookie("ahoy_visit");
-    destroyCookie("ahoy_visitor");
+    destroyCookie("visit_token");
+    destroyCookie("visitor_token");
     destroyCookie("ahoy_events");
     destroyCookie("ahoy_track");
     return true;
