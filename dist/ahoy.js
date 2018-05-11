@@ -398,8 +398,8 @@
       // wait until successful to destroy
       setReady();
     });
-    }
   }
+  
 
   ahoy.getVisitId = ahoy.getVisitToken = function () {
     return $('meta[name=visit-token]').attr('content');
