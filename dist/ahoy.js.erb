@@ -121,21 +121,9 @@
       return null;
     }
   };
-  
-  if ("<%= Rails.env %>" == 'development'){
-    var urlPrefix = "http://localhost:3010"
-  }
-
-  if ("<%= Rails.env %>" == 'testing'){
-    var urlPrefix = "https://track-testing.weteachme.com"
-  }
-
-  if ("<%= Rails.env %>" == 'production'){
-    var urlPrefix = "https://track.weteachme.com"
-  }
-
+ 
   var config = {
-    urlPrefix: urlPrefix,
+    urlPrefix: window.urlPrefix,
     visitsUrl: "/ahoy/visits",
     eventsUrl: "/ahoy/events",
     cookieDomain: null,
