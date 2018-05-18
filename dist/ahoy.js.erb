@@ -122,15 +122,15 @@
     }
   };
   
-  if (_rails_env_ == 'development'){
+  if ("<%= Rails.env %>" == 'development'){
     var urlPrefix = "http://localhost:3010"
   }
 
-  if (_rails_env_ == 'testing'){
+  if ("<%= Rails.env %>" == 'testing'){
     var urlPrefix = "https://track-testing.weteachme.com"
   }
 
-  if (_rails_env_ == 'production'){
+  if ("<%= Rails.env %>" == 'production'){
     var urlPrefix = "https://track.weteachme.com"
   }
 
