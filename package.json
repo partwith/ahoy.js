@@ -3,7 +3,7 @@
   "version": "0.3.2",
   "homepage": "https://github.com/ankane/ahoy.js",
   "description": "Simple, powerful JavaScript analytics",
-  "main": "dist/ahoy.js.erb",
+  "main": "dist/ahoy.js",
   "module": "dist/ahoy.esm.js",
   "scripts": {
     "build": "rollup -c",
