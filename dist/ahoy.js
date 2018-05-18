@@ -134,8 +134,6 @@
     var urlPrefix = "https://track.weteachme.com"
   }
 
-  var urlPrefix =
-
   var config = {
     urlPrefix: urlPrefix,
     visitsUrl: "/ahoy/visits",
