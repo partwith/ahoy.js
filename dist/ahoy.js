@@ -121,9 +121,23 @@
       return null;
     }
   };
+  
+  if (_rails_env_ == 'development'){
+    var urlPrefix = "http://localhost:3010"
+  }
+
+  if (_rails_env_ == 'testing'){
+    var urlPrefix = "https://track-testing.weteachme.com"
+  }
+
+  if (_rails_env_ == 'production'){
+    var urlPrefix = "https://track.weteachme.com"
+  }
+
+  var urlPrefix =
 
   var config = {
-    urlPrefix: "http://localhost:3010",
+    urlPrefix: urlPrefix,
     visitsUrl: "/ahoy/visits",
     eventsUrl: "/ahoy/events",
     cookieDomain: null,
