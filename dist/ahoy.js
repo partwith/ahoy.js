@@ -384,6 +384,7 @@
       landing_page: window.location.href,
       screen_width: window.screen.width,
       screen_height: window.screen.height,
+      city: $('meta[name=city]').attr('content'),
       js: true
     };
 
