@@ -386,7 +386,7 @@
       screen_height: window.screen.height,
       city: $('meta[name=city]').attr('content'),
       subdomain_flag: $('meta[name=subdomain_flag]').attr('content'),
-      subscriber: $('meta[name=subscriber]').attr('content')
+      subscriber: $('meta[name=subscriber]').attr('content'),
       js: true
     };
 
