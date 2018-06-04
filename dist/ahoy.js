@@ -296,6 +296,7 @@
     var data = {
       events: [event]
     };
+    data.events_json = JSON.stringify(data.events);
     if (config.cookies) {
       data.visit_token = event.visit_token;
       data.visitor_token = event.visitor_token;
