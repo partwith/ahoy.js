@@ -398,10 +398,12 @@
 
     log(data);
 
-    sendRequest(visitsUrl(), data, function () {
-      // wait until successful to destroy
-      setReady();
-    });
+    if (config.urlPrefix) {
+      sendRequest(visitsUrl(), data, function () {
+        // wait until successful to destroy
+        setReady();
+      });
+    }
   }
   
 
