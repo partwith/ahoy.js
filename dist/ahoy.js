@@ -130,7 +130,7 @@
     page: null,
     platform: "Web",
     useBeacon: true,
-    startOnReady: true,
+    startOnReady: window.startOnReady,
     trackVisits: true,
     cookies: true
   };
